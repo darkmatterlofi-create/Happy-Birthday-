@@ -1,69 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Prachi</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-    }
-    h1 {
-      font-size: 2.4rem;
-      margin: 10px;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .cake {
-      font-size: 6rem;
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .confetti {
-      width: 10px;
-      height: 10px;
-      background: #fff;
-      position: absolute;
-      top: -10px;
-      animation: fall 5s linear infinite;
-    }
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(720deg); }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Prachi ❤️</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg,#ff5cf0,#5fa3ff,#65ffb4);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+  overflow-x: hidden;
+  text-align: center;
+  color: white;
+}
+
+/* gradient bg animation */
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+h1 {
+  margin-top: 50px;
+  font-size: 2.6rem;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+/* cake image */
+#cake {
+  width: 260px;
+  margin-top: 25px;
+  cursor: pointer;
+  animation: bounce 3s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-8px);}
+}
+
+/* quotes */
+.quote {
+  font-size: 1.4rem;
+  margin-top: 40px;
+  opacity: 0;
+  animation: quoteFade 6s infinite;
+}
+
+@keyframes quoteFade {
+  0%{opacity:0;}
+  20%{opacity:1;}
+  50%{opacity:1;}
+  80%{opacity:0;}
+  100%{opacity:0;}
+}
+
+/* hidden cake slice */
+#slice {
+  display:none;
+  width:260px;
+  margin:auto;
+}
+
+button {
+  margin-top: 40px;
+  font-size: 1.1rem;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  color: #d633ff;
+  font-weight: bold;
+}
+</style>
 </head>
 <body>
-  <div class="cake">🎂</div>
-  <h1>Happy Birthday Prachi ❤️🎉</h1>
 
-  <script>
-    for (let i = 0; i < 50; i++) {
-      let confetti = document.createElement("div");
-      confetti.classList.add("confetti");
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.animationDelay = Math.random() * 5 + "s";
-      confetti.style.backgroundColor =
-        `hsl(${Math.random() * 360}, 70%, 60%)`;
-      document.body.appendChild(confetti);
-    }
-  </script>
+<h1>Happy Birthday Prachi ❤️ 🎉</h1>
+
+<!-- surprise button -->
+<button onclick="startSurprise()">Click for Surprise 🎁</button>
+
+<!-- cake images -->
+<img id="cake" src="https://i.imgur.com/YEh8Cq3.png" style="display:none;">
+<img id="slice" src="https://i.imgur.com/IQyqZPQ.png">
+
+<!-- quotes -->
+<div class="quote">Tum muskurao duniya jale — Happy Birthday Prachi ❤️</div>
+<div class="quote">Khushiyan tumhari kadmo me ho 🎂✨</div>
+<div class="quote">Tum ho to har lamha khoobsurat 💖</div>
+<div class="quote">Jitna pyaar aaj hai... utna hamesha rahe 💫</div>
+
+<audio id="song" src="https://dl.sndup.net/4p7h/romantic.mp3"></audio>
+
+<script>
+// start surprise
+function startSurprise(){
+  document.querySelector("button").style.display="none";
+  document.getElementById("cake").style.display="block";
+  document.getElementById("song").play();
+}
+
+// cake cutting
+document.getElementById("cake").onclick = function(){
+  this.style.display="none";
+  document.getElementById("slice").style.display="block";
+  alert("🎂 Cake cut ho gaya! 💖");
+}
+</script>
+
 </body>
 </html>
